@@ -1,0 +1,14 @@
+version: '2'
+services:
+  redis_db:
+    image: "redis:alpine"
+    ports:
+    - "6379:6379"
+  web:
+    build: .
+    ports:
+     - "9007:9007"
+    volumes:
+     - .:/usr/src/app
+    depends_on:
+      - redis_db
